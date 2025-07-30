@@ -1,13 +1,205 @@
-<div class="section">
-  <button class="collapsible">🔗 Quick Links</button>
-  <div class="content quick-links">
-    <a href="https://www.lensbridge.tech/" target="_blank">LensBridge</a>
-    <a href="https://www.notion.so/utmmsa2023-24/Marketing-20793a1f50b38177a868e8bf46ba31ad" target="_blank">MSA Marketing Notion</a>
-    <a href="https://www.notion.so/utmmsa2023-24/25-26-20793a1f50b3802fa699ea4681c955b5" target="_blank">General MSA Notion</a>
-    <a href="https://www.utm.utoronto.ca/registrar/dates" target="_blank">UTM Important Dates</a>
+<!-- BEGIN UPDATED HTML -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Marketing Command Center</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Amiri&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: #fdfdfd;
+      color: #1f2937;
+      padding: 20px;
+    }
+
+    header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    header img.logo {
+      height: 90px;
+    }
+
+    .bismillah {
+      font-family: 'Amiri', serif;
+      font-size: 28px;
+      color: #1e3a8a;
+      text-align: center;
+      margin: 15px 0;
+    }
+
+    .ayah {
+      font-style: italic;
+      color: #6b7280;
+      font-size: 14px;
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    h1 {
+      color: #1e3a8a;
+      margin: 10px 0;
+    }
+
+    .section {
+      margin: 30px auto;
+      max-width: 950px;
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 25px;
+      border: 1px solid #d1d5db;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    .collapsible {
+      cursor: pointer;
+      padding: 12px 18px;
+      font-weight: bold;
+      background-color: #e8f0ff;
+      color: #1e3a8a;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      border: none;
+      text-align: left;
+      font-size: 16px;
+    }
+
+    .content {
+      display: none;
+      margin-top: 10px;
+    }
+
+    .quick-links a {
+      display: inline-block;
+      margin: 10px 10px 0 0;
+      padding: 10px 15px;
+      background-color: #fff9e6;
+      color: #a16207;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+    }
+
+    .task-list input[type=checkbox] {
+      margin-right: 10px;
+    }
+
+    .team-role {
+      margin: 10px 0;
+      padding: 10px;
+      background: #f1f5f9;
+      border-left: 4px solid #1d4ed8;
+      border-radius: 8px;
+    }
+
+    .countdown {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    h3 {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img class="logo" src="msa_logo.png" alt="UTMMSA Logo">
+    <div class="bismillah">بِسْمِ ٱللّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
+    <h1>Marketing Command Center</h1>
+    <div class="ayah">"وَقُلِ ٱعْمَلُوا۟ فَسَيَرَى ٱللَّهُ عَمَلَكُمْ" – [At-Tawbah 9:105]</div>
+  </header>
+
+  <div class="section">
+    <button class="collapsible">⏳ Countdowns</button>
+    <div class="content">
+      <div class="countdown" id="cd0"><strong>First Day of Class:</strong> <span></span></div>
+      <div class="countdown" id="cd1"><strong>Frosh Field Day:</strong> <span></span></div>
+      <div class="countdown" id="cd2"><strong>End of Semester:</strong> <span></span></div>
+      <div class="countdown" id="cd3"><strong>Ramadan Begins (est.):</strong> <span></span></div>
+    </div>
   </div>
-  <br>
-  <iframe src="https://calendar.google.com/calendar/embed?src=1d0426860790ea9895dd79fce991842ae9aa49283542b72f38632c3f79ffb29f%40group.calendar.google.com&ctz=America%2FToronto"
-    style="border: 0" width="100%" height="600" frameborder="0" scrolling="no"></iframe>
+
+  <div class="section">
+    <button class="collapsible">🔗 Quick Links</button>
+    <div class="content quick-links">
+      <a href="https://www.lensbridge.tech/" target="_blank">LensBridge</a>
+      <a href="https://www.notion.so/utmmsa2023-24/Marketing-20793a1f50b38177a868e8bf46ba31ad" target="_blank">MSA Marketing Notion</a>
+      <a href="https://www.notion.so/utmmsa2023-24/25-26-20793a1f50b3802fa699ea4681c955b5" target="_blank">General MSA Notion</a>
+      <a href="https://www.utm.utoronto.ca/registrar/dates" target="_blank">UTM Important Dates</a>
+      <a href="https://calendar.google.com/calendar/u/0?cid=MWQwNDI2ODYwNzkwZWE5ODk1ZGQ3OWZjZTk5MTg0MmFlOWFhNDkyODM1NDJiNzJmMzg2MzJjM2Y3OWZmYjI5ZkBncm91cC5jYWxlbmRhci5nb29nbGUuY29t" target="_blank">📆 Shared MSA Calendar</a>
+    </div>
+  </div>
+
+ <div class="section">
+  <button class="collapsible">🎨 Tasks - Graphic Design</button>
+  <div class="content task-list" contenteditable="true">
+    <p>Edit your tasks here...</p>
+  </div>
 </div>
 
+<div class="section">
+  <button class="collapsible">✍️ Tasks - Content Creation</button>
+  <div class="content task-list" contenteditable="true">
+    <p>Edit your tasks here...</p>
+  </div>
+</div>
+
+<div class="section">
+  <button class="collapsible">📱 Tasks - Social Media Management</button>
+  <div class="content task-list" contenteditable="true">
+    <p>Edit your tasks here...</p>
+  </div>
+</div>
+
+<div class="section">
+  <button class="collapsible">📸 Tasks - Photography</button>
+  <div class="content task-list" contenteditable="true">
+    <p>Edit your tasks here...</p>
+  </div>
+</div>
+
+  <div class="section">
+    <button class="collapsible">🧠 Team Roles</button>
+    <div class="content">
+      <div class="team-role"><strong>Social Media Managers:</strong> Nadia, Wafa, Rose</div>
+      <div class="team-role"><strong>Graphic Designers:</strong> Jasra, Taimaa, Haleema, Wakeel, Fahmi, Zoha</div>
+      <div class="team-role"><strong>Content Creators:</strong> Mustafa, Faris, Zunairah, Ayesha</div>
+      <div class="team-role"><strong>Photographer:</strong> Fathima</div>
+    </div>
+  </div>
+
+  <script>
+    document.querySelectorAll(".collapsible").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const content = btn.nextElementSibling;
+        content.style.display = content.style.display === "block" ? "none" : "block";
+      });
+    });
+
+    const dates = ["2025-09-02", "2025-09-13", "2025-12-20", "2026-02-17"];
+    dates.forEach((dateStr, i) => {
+      const countEl = document.querySelector(`#cd${i} span`);
+      const target = new Date(dateStr + 'T00:00:00');
+      function updateCountdown() {
+        const now = new Date();
+        const diff = target - now;
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((diff / (1000 * 60)) % 60);
+        countEl.textContent = `${days}d ${hours}h ${minutes}m`;
+      }
+      updateCountdown();
+      setInterval(updateCountdown, 60000);
+    });
+  </script>
+</body>
+</html>
+<!-- END UPDATED HTML -->
