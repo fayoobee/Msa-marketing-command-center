@@ -125,9 +125,9 @@
 <body>
   <header>
     <img class="logo" src="msa_logo.png" alt="UTMMSA Logo">
-    <div class="bismillah">بِسْمِ ٱللَّهِ ٱلرَّحْمَـنِ ٱلرَّحِيمِ</div>
+    <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَـنِ الرَّحِيمِ</div>
     <h1>Marketing Command Center</h1>
-    <div class="ayah">"وَقُلِ اعْمَلُوا فَسَيَرَى ٱللهُ عَمَلَكُمْ" – [At-Tawbah 9:105]</div>
+    <div class="ayah">“وَقُلِ اعْمَلُوا فَسَيَرَى اللهُ عَمَلَكُمْ” – [At-Tawbah 9:105]</div>
   </header>
 
   <div class="section">
@@ -147,40 +147,32 @@
       <a href="https://www.notion.so/utmmsa2023-24/Marketing-20793a1f50b38177a868e8bf46ba31ad" target="_blank">MSA Marketing Notion</a>
       <a href="https://www.notion.so/utmmsa2023-24/25-26-20793a1f50b3802fa699ea4681c955b5" target="_blank">General MSA Notion</a>
       <a href="https://www.utm.utoronto.ca/registrar/dates" target="_blank">UTM Important Dates</a>
-      <a href="https://calendar.google.com/calendar/u/0?cid=MWQwNDI2ODYwNzkwZWE5ODk1ZGQ3OWZjZTk5MTg0MmFlOWFhNDkyODM1NDJiNzJmMzg2MzJjM2Y3OWZmYjI5ZkBncm91cC5jYWxlbmRhci5nb29nbGUuY29t" target="_blank">📆 Shared MSA Calendar</a>
+      <a href="https://calendar.google.com/calendar/u/0?cid=MWQwNDI2ODYwNzkwZWE5ODk1ZGQ3OWZjZTk5MTg0MmFlOWFhNDkyODM1NDJiNzJmMzg2MzJjM2Y3OWZmYjI5ZkBncm91cC5jYWxlbmRhci5nb29nbGUuY29t" target="_blank">🗖️ Shared MSA Calendar</a>
     </div>
   </div>
 
   <div class="section">
     <button class="collapsible">🎨 Tasks - Graphic Design</button>
-    <div class="content task-list" id="graphicTasks">
-      <div class="task-line"><input type="checkbox"><input type="text" class="task-input" placeholder="Enter a task..."></div>
-    </div>
+    <div class="content task-list" id="graphicTasks"></div>
   </div>
 
   <div class="section">
     <button class="collapsible">✍️ Tasks - Content Creation</button>
-    <div class="content task-list" id="contentTasks">
-      <div class="task-line"><input type="checkbox"><input type="text" class="task-input" placeholder="Enter a task..."></div>
-    </div>
+    <div class="content task-list" id="contentTasks"></div>
   </div>
 
   <div class="section">
     <button class="collapsible">📱 Tasks - Social Media Management</button>
-    <div class="content task-list" id="socialTasks">
-      <div class="task-line"><input type="checkbox"><input type="text" class="task-input" placeholder="Enter a task..."></div>
-    </div>
+    <div class="content task-list" id="socialTasks"></div>
   </div>
 
   <div class="section">
     <button class="collapsible">📸 Tasks - Photography</button>
-    <div class="content task-list" id="photoTasks">
-      <div class="task-line"><input type="checkbox"><input type="text" class="task-input" placeholder="Enter a task..."></div>
-    </div>
+    <div class="content task-list" id="photoTasks"></div>
   </div>
 
   <div class="section">
-    <button class="collapsible">🧠 Team Roles</button>
+    <button class="collapsible">🧐 Team Roles</button>
     <div class="content">
       <div class="team-role"><strong>Social Media Managers:</strong> Nadia, Wafa, Rose</div>
       <div class="team-role"><strong>Graphic Designers:</strong> Jasra, Taimaa, Haleema, Wakeel, Fahmi, Zoha</div>
@@ -213,31 +205,63 @@
       setInterval(updateCountdown, 60000);
     });
 
-    function enableTaskAdding(containerId) {
+    function enableTaskAdding(containerId, storageKey) {
       const container = document.getElementById(containerId);
+
+      function saveTasks() {
+        const tasks = [];
+        container.querySelectorAll(".task-input").forEach(input => {
+          tasks.push({ text: input.value });
+        });
+        localStorage.setItem(storageKey, JSON.stringify(tasks));
+      }
+
+      function loadTasks() {
+        const saved = localStorage.getItem(storageKey);
+        if (saved) {
+          const tasks = JSON.parse(saved);
+          tasks.forEach(t => {
+            const taskLine = createTaskLine(t.text);
+            container.appendChild(taskLine);
+          });
+        } else {
+          container.appendChild(createTaskLine(""));
+        }
+      }
+
+      function createTaskLine(text) {
+        const taskLine = document.createElement("div");
+        taskLine.className = "task-line";
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        const input = document.createElement("input");
+        input.type = "text";
+        input.className = "task-input";
+        input.placeholder = "Enter a task...";
+        input.value = text;
+        input.addEventListener("input", saveTasks);
+        taskLine.appendChild(checkbox);
+        taskLine.appendChild(input);
+        return taskLine;
+      }
+
       container.addEventListener("keydown", function(e) {
         if (e.key === "Enter") {
           e.preventDefault();
-          const taskLine = document.createElement("div");
-          taskLine.className = "task-line";
-          const checkbox = document.createElement("input");
-          checkbox.type = "checkbox";
-          const input = document.createElement("input");
-          input.type = "text";
-          input.className = "task-input";
-          input.placeholder = "Enter a task...";
-          taskLine.appendChild(checkbox);
-          taskLine.appendChild(input);
+          const taskLine = createTaskLine("");
           container.appendChild(taskLine);
-          input.focus();
+          taskLine.querySelector("input.task-input").focus();
+          saveTasks();
         }
       });
+
+      loadTasks();
     }
 
-    enableTaskAdding("graphicTasks");
-    enableTaskAdding("contentTasks");
-    enableTaskAdding("socialTasks");
-    enableTaskAdding("photoTasks");
+    enableTaskAdding("graphicTasks", "graphicTasks");
+    enableTaskAdding("contentTasks", "contentTasks");
+    enableTaskAdding("socialTasks", "socialTasks");
+    enableTaskAdding("photoTasks", "photoTasks");
   </script>
 </body>
 </html>
