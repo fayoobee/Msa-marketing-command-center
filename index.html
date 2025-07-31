@@ -19,6 +19,16 @@
       background-image: none;
       color: white;
     }
+
+    /* Glow hover effect */
+    .collapsible:hover,
+    .night-toggle:hover,
+    .quick-links a:hover,
+    .speech-bubble:hover {
+      box-shadow: 0 0 12px 3px #60a5fa;
+      transform: scale(1.03);
+    }
+
     .night-toggle {
       position: fixed;
       top: 15px;
@@ -31,6 +41,7 @@
       border-radius: 6px;
       cursor: pointer;
       font-weight: bold;
+      transition: transform 0.3s, box-shadow 0.3s;
     }
     header {
       display: flex;
@@ -98,6 +109,7 @@
       text-align: left;
       font-size: 16px;
       font-family: 'Montserrat', sans-serif;
+      transition: transform 0.3s, box-shadow 0.3s;
     }
     body.dark .collapsible {
       background-color: #374151;
@@ -116,6 +128,7 @@
       text-decoration: none;
       border-radius: 8px;
       font-weight: 600;
+      transition: transform 0.3s, box-shadow 0.3s;
     }
     body.dark .quick-links a {
       background-color: #4b5563;
@@ -127,6 +140,7 @@
       justify-content: space-between;
       border-bottom: 1px solid #e5e7eb;
       padding: 8px 0;
+      flex-wrap: wrap;
     }
     body.dark .task-line {
       border-color: #374151;
@@ -145,7 +159,14 @@
       color: #6b7280;
       padding-left: 10px;
     }
-    body.dark .due-date {
+    .assigned-to {
+      font-size: 13px;
+      font-style: italic;
+      color: #9ca3af;
+      margin-left: 36px;
+    }
+    body.dark .due-date,
+    body.dark .assigned-to {
       color: #d1d5db;
     }
     .team-role {
@@ -164,7 +185,6 @@
       margin-bottom: 8px;
     }
 
-    /* Speech bubble */
     .speech-bubble {
       position: fixed;
       bottom: 20px;
@@ -180,10 +200,6 @@
       z-index: 1000;
       transition: transform 0.3s, box-shadow 0.3s;
     }
-    .speech-bubble:hover {
-      box-shadow: 0 0 15px 5px #3b82f6;
-      transform: scale(1.05);
-    }
     @keyframes fadeOut {
       to {
         opacity: 0;
@@ -194,117 +210,12 @@
 </head>
 <body>
   <button class="night-toggle" onclick="toggleNightMode()">🌙 Toggle Night Mode</button>
-  <div class="speech-bubble" id="greetingBubble">Assalamu alaikum</div>
+  <div class="speech-bubble" id="greetingBubble">Assalamu alaikum!</div>
 
+  <!-- 🕌 Header + logo, bismillah, ayah -->
   <header>
     <img class="logo" id="msaLogo" src="msa_logo.png" alt="UTMMSA Logo">
     <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَـنِ الرَّحِيمِ</div>
     <h1>Marketing Command Center</h1>
     <div class="ayah">“وَقُلِ اعْمَلُوا فَسَيَرَى اللَّهُ عَمَلَكُمْ” – [At-Tawbah 9:105]</div>
   </header>
-
-  <div class="section">
-    <button class="collapsible">⏳ Countdowns</button>
-    <div class="content">
-      <div class="countdown" id="cd0"><strong>First Day of Class:</strong> <span></span></div>
-      <div class="countdown" id="cd1"><strong>Frosh Field Day:</strong> <span></span></div>
-      <div class="countdown" id="cd2"><strong>End of Semester:</strong> <span></span></div>
-      <div class="countdown" id="cd3"><strong>Ramadan Begins (est.):</strong> <span></span></div>
-    </div>
-  </div>
-
-  <div class="section">
-    <button class="collapsible">🔗 Quick Links</button>
-    <div class="content quick-links">
-      <a href="https://www.lensbridge.tech/" target="_blank">LensBridge</a>
-      <a href="https://www.notion.so/utmmsa2023-24/Marketing-20793a1f50b38177a868e8bf46ba31ad" target="_blank">Marketing Notion</a>
-      <a href="https://www.notion.so/utmmsa2023-24/25-26-20793a1f50b3802fa699ea4681c955b5" target="_blank">General MSA Notion</a>
-      <a href="https://www.utm.utoronto.ca/registrar/dates" target="_blank">UTM Important Dates</a>
-      <a href="https://calendar.google.com/calendar/u/0?cid=MW..." target="_blank">📅 Shared MSA Calendar</a>
-    </div>
-  </div>
-
-  <div class="section">
-    <button class="collapsible">🎨 Tasks - Graphic Design</button>
-    <div class="content task-list">
-      <div class="task-line"><input type="checkbox"><span class="task-text">SAMPLE TASK 1</span><div class="due-date">Due: Aug 12, 2025</div></div>
-      <div class="task-line"><input type="checkbox"><span class="task-text">SAMPLE TASK 2</span><div class="due-date">Due: Aug 22, 2025</div></div>
-      <div class="task-line"><input type="checkbox"><span class="task-text">SAMPLE TASK 3</span><div class="due-date">Due: Sept 2, 2025</div></div>
-    </div>
-  </div>
-
-  <div class="section">
-    <button class="collapsible">✍️ Tasks - Content Creation</button>
-    <div class="content task-list">
-      <div class="task-line"><input type="checkbox"><span class="task-text">SAMPLE TASK 1</span><div class="due-date">Due: Aug 15, 2025</div></div>
-      <div class="task-line"><input type="checkbox"><span class="task-text">SAMPLE TASK 2</span><div class="due-date">Due: Aug 25, 2025</div></div>
-      <div class="task-line"><input type="checkbox"><span class="task-text">SAMPLE TASK 3</span><div class="due-date">Due: Sept 1, 2025</div></div>
-    </div>
-  </div>
-
-  <div class="section">
-    <button class="collapsible">📱 Tasks - Social Media Management</button>
-    <div class="content task-list">
-      <div class="task-line"><input type="checkbox"><span class="task-text">SAMPLE TASK 1</span><div class="due-date">Due: Aug 20, 2025</div></div>
-      <div class="task-line"><input type="checkbox"><span class="task-text">SAMPLE TASK 2</span><div class="due-date">Due: Aug 28, 2025</div></div>
-      <div class="task-line"><input type="checkbox"><span class="task-text">SAMPLE TASK 3</span><div class="due-date">Due: Sept 4, 2025</div></div>
-    </div>
-  </div>
-
-  <div class="section">
-    <button class="collapsible">📸 Tasks - Photography</button>
-    <div class="content task-list">
-      <div class="task-line"><input type="checkbox"><span class="task-text">SAMPLE TASK 1</span><div class="due-date">Due: Aug 18, 2025</div></div>
-      <div class="task-line"><input type="checkbox"><span class="task-text">SAMPLE TASK 2</span><div class="due-date">Due: Aug 26, 2025</div></div>
-      <div class="task-line"><input type="checkbox"><span class="task-text">SAMPLE TASK 3</span><div class="due-date">Due: Sept 5, 2025</div></div>
-    </div>
-  </div>
-
-  <div class="section">
-    <button class="collapsible">🧠 Team Roles</button>
-    <div class="content">
-      <div class="team-role"><strong>Directors:</strong> Ibrahim Chehab, Farah Ismail</div>
-      <div class="team-role"><strong>Social Media Managers:</strong> Nadia, Wafa, Rose</div>
-      <div class="team-role"><strong>Graphic Designers:</strong> Jasra, Taimaa, Haleema, Wakeel, Fahmi, Zoha</div>
-      <div class="team-role"><strong>Content Creators:</strong> Mustafa, Faris, Zunairah, Ayesha</div>
-      <div class="team-role"><strong>Photographer:</strong> Fathima</div>
-    </div>
-  </div>
-
-  <script>
-    function toggleNightMode() {
-      const body = document.body;
-      const logo = document.getElementById("msaLogo");
-      body.classList.toggle('dark');
-      if (body.classList.contains('dark')) {
-        logo.src = "msa_logo_white.png";
-      } else {
-        logo.src = "msa_logo.png";
-      }
-    }
-
-    document.querySelectorAll(".collapsible").forEach(btn => {
-      btn.addEventListener("click", () => {
-        const content = btn.nextElementSibling;
-        content.style.display = content.style.display === "block" ? "none" : "block";
-      });
-    });
-
-    const dates = ["2025-09-02", "2025-09-13", "2025-12-20", "2026-02-17"];
-    dates.forEach((dateStr, i) => {
-      const countEl = document.querySelector(`#cd${i} span`);
-      const target = new Date(dateStr + 'T00:00:00');
-      function updateCountdown() {
-        const now = new Date();
-        const diff = target - now;
-        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-        const minutes = Math.floor((diff / (1000 * 60)) % 60);
-        countEl.textContent = `${days}d ${hours}h ${minutes}m`;
-      }
-      updateCountdown();
-      setInterval(updateCountdown, 60000);
-    });
-  </script>
-</body>
-</html>
