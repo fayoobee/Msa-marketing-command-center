@@ -6,18 +6,33 @@
   <title>Marketing Command Center</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --background: #fdfdfd;
+      --text: #1f2937;
+      --section: #ffffff;
+      --task-border: #d1d5db;
+      --link-bg: #fff9e6;
+      --link-text: #a16207;
+    }
+
+    body.dark {
+      --background: #111827;
+      --text: #ffffff;
+      --section: #1f2937;
+      --task-border: #374151;
+      --link-bg: #1e293b;
+      --link-text: #facc15;
+    }
+
     body {
       margin: 0;
       font-family: 'Montserrat', sans-serif;
-      background: #fdfdfd;
-      color: #1f2937;
+      background: var(--background);
+      color: var(--text);
       padding: 20px;
-      transition: background 0.3s, color 0.3s;
-    }
-
-    body.night {
-      background: #111827;
-      color: #f9fafb;
+      background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Islamic_Geometric_Pattern_04.svg/2560px-Islamic_Geometric_Pattern_04.svg.png");
+      background-size: cover;
+      background-attachment: fixed;
     }
 
     header {
@@ -26,16 +41,15 @@
       align-items: center;
       gap: 10px;
       margin-bottom: 20px;
-      position: relative;
     }
 
     header img.logo {
       height: 90px;
-      transition: filter 0.3s;
+      transition: 0.3s ease-in-out;
     }
 
-    body.night img.logo {
-      content: url('msa_logo_white.png');
+    body.dark img.logo {
+      content: url("msa_logo_white.png");
     }
 
     .bismillah {
@@ -46,46 +60,40 @@
       margin: 15px 0;
     }
 
-    body.night .bismillah {
-      color: #f9fafb;
-    }
-
     .ayah {
       font-style: italic;
-      color: #6b7280;
       font-size: 14px;
       text-align: center;
       margin-bottom: 25px;
-    }
-
-    body.night .ayah {
-      color: #d1d5db;
+      color: var(--text);
+      opacity: 0.8;
     }
 
     h1 {
       color: #1e3a8a;
       margin: 10px 0;
-      font-family: 'Cinzel', serif;
     }
 
-    body.night h1 {
-      color: #ffffff;
+    .toggle-btn {
+      background: none;
+      border: 2px solid var(--text);
+      color: var(--text);
+      padding: 8px 16px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-top: 10px;
+      transition: 0.3s;
     }
 
     .section {
       margin: 30px auto;
       max-width: 950px;
-      background: #ffffff;
+      background: var(--section);
       border-radius: 16px;
       padding: 25px;
-      border: 1px solid #d1d5db;
+      border: 1px solid var(--task-border);
       box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-      transition: background 0.3s, color 0.3s;
-    }
-
-    body.night .section {
-      background: #1f2937;
-      border-color: #374151;
     }
 
     .collapsible {
@@ -101,11 +109,6 @@
       font-size: 16px;
     }
 
-    body.night .collapsible {
-      background-color: #334155;
-      color: #f9fafb;
-    }
-
     .content {
       display: none;
       margin-top: 10px;
@@ -115,16 +118,11 @@
       display: inline-block;
       margin: 10px 10px 0 0;
       padding: 10px 15px;
-      background-color: #fff9e6;
-      color: #a16207;
+      background-color: var(--link-bg);
+      color: var(--link-text);
       text-decoration: none;
       border-radius: 8px;
       font-weight: 600;
-    }
-
-    body.night .quick-links a {
-      background-color: #4b5563;
-      color: #fcd34d;
     }
 
     .task-list {
@@ -145,16 +143,10 @@
       flex: 1;
       padding: 6px 10px;
       font-size: 14px;
-      border: 1px solid #d1d5db;
+      border: 1px solid var(--task-border);
       border-radius: 6px;
-      background: #fff;
-      color: #1f2937;
-    }
-
-    body.night .task-input {
-      background: #374151;
-      color: #f9fafb;
-      border-color: #6b7280;
+      background: transparent;
+      color: var(--text);
     }
 
     .team-role {
@@ -165,49 +157,13 @@
       border-radius: 8px;
     }
 
-    body.night .team-role {
-      background: #334155;
-      border-left-color: #3b82f6;
-      color: #f9fafb;
+    body.dark .team-role {
+      background: #1e293b;
     }
 
     .countdown {
       font-size: 18px;
       margin-bottom: 8px;
-    }
-
-    #toggleNight {
-      margin-top: 10px;
-      padding: 8px 16px;
-      background: #e0e7ff;
-      color: #1e40af;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: 600;
-    }
-
-    body.night #toggleNight {
-      background: #4b5563;
-      color: #f9fafb;
-    }
-
-    .decor {
-      position: fixed;
-      z-index: -1;
-      opacity: 0.1;
-    }
-
-    .decor.top-left {
-      top: 0;
-      left: 0;
-      height: 150px;
-    }
-
-    .decor.bottom-right {
-      bottom: 0;
-      right: 0;
-      height: 150px;
     }
   </style>
 </head>
@@ -216,19 +172,66 @@
     <img class="logo" src="msa_logo.png" alt="UTMMSA Logo">
     <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَـنِ الرَّحِيمِ</div>
     <h1>Marketing Command Center</h1>
-    <div class="ayah">“وَقُلِ اعْمَلُوا فَسَيَرَى اللهُ عَمَلَكُمْ” – [At-Tawbah 9:105]</div>
-    <button id="toggleNight">🌙 Toggle Night Mode</button>
+    <div class="ayah">“وَقُلِ اعْمَلُوا فَسَيَرَى اللَّهُ عَمَلَكُمْ” – [At-Tawbah 9:105]</div>
+    <button class="toggle-btn" onclick="toggleDark()">🌙 Toggle Night Mode</button>
   </header>
 
-  <!-- Islamic Decorative SVGs -->
-  <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Islamic_border_1.svg" class="decor top-left">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Islamic_border_1.svg" class="decor bottom-right">
+  <div class="section">
+    <button class="collapsible">⏳ Countdowns</button>
+    <div class="content">
+      <div class="countdown" id="cd0"><strong>First Day of Class:</strong> <span></span></div>
+      <div class="countdown" id="cd1"><strong>Frosh Field Day:</strong> <span></span></div>
+      <div class="countdown" id="cd2"><strong>End of Semester:</strong> <span></span></div>
+      <div class="countdown" id="cd3"><strong>Ramadan Begins (est.):</strong> <span></span></div>
+    </div>
+  </div>
 
-  <!-- Content Sections here like before -->
-  <!-- (Countdowns, Quick Links, Tasks, Team Roles – insert your existing HTML here) -->
+  <div class="section">
+    <button class="collapsible">🔗 Quick Links</button>
+    <div class="content quick-links">
+      <a href="https://www.lensbridge.tech/" target="_blank">LensBridge</a>
+      <a href="https://www.notion.so/utmmsa2023-24/Marketing-20793a1f50b38177a868e8bf46ba31ad" target="_blank">MSA Marketing Notion</a>
+      <a href="https://www.notion.so/utmmsa2023-24/25-26-20793a1f50b3802fa699ea4681c955b5" target="_blank">General MSA Notion</a>
+      <a href="https://www.utm.utoronto.ca/registrar/dates" target="_blank">UTM Important Dates</a>
+      <a href="https://calendar.google.com/calendar/u/0?cid=MWQwNDI2ODYwNzkwZWE5ODk1ZGQ3OWZjZTk5MTg0MmFlOWFhNDkyODM1NDJiNzJmMzg2MzJjM2Y3OWZmYjI5ZkBncm91cC5jYWxlbmRhci5nb29nbGUuY29t" target="_blank">📆 Shared MSA Calendar</a>
+    </div>
+  </div>
+
+  <div class="section">
+    <button class="collapsible">🎨 Tasks - Graphic Design</button>
+    <div class="content task-list" id="graphicTasks"></div>
+  </div>
+
+  <div class="section">
+    <button class="collapsible">✍️ Tasks - Content Creation</button>
+    <div class="content task-list" id="contentTasks"></div>
+  </div>
+
+  <div class="section">
+    <button class="collapsible">📱 Tasks - Social Media Management</button>
+    <div class="content task-list" id="socialTasks"></div>
+  </div>
+
+  <div class="section">
+    <button class="collapsible">📸 Tasks - Photography</button>
+    <div class="content task-list" id="photoTasks"></div>
+  </div>
+
+  <div class="section">
+    <button class="collapsible">🧐 Team Roles</button>
+    <div class="content">
+      <div class="team-role"><strong>Social Media Managers:</strong> Nadia, Wafa, Rose</div>
+      <div class="team-role"><strong>Graphic Designers:</strong> Jasra, Taimaa, Haleema, Wakeel, Fahmi, Zoha</div>
+      <div class="team-role"><strong>Content Creators:</strong> Mustafa, Faris, Zunairah, Ayesha</div>
+      <div class="team-role"><strong>Photographer:</strong> Fathima</div>
+    </div>
+  </div>
 
   <script>
-    // Collapsible Sections
+    function toggleDark() {
+      document.body.classList.toggle("dark");
+    }
+
     document.querySelectorAll(".collapsible").forEach(btn => {
       btn.addEventListener("click", () => {
         const content = btn.nextElementSibling;
@@ -236,18 +239,6 @@
       });
     });
 
-    // Night Mode Toggle
-    const toggle = document.getElementById("toggleNight");
-    toggle.addEventListener("click", () => {
-      document.body.classList.toggle("night");
-      localStorage.setItem("nightMode", document.body.classList.contains("night"));
-    });
-
-    if (localStorage.getItem("nightMode") === "true") {
-      document.body.classList.add("night");
-    }
-
-    // Countdown Logic (same as before)
     const dates = ["2025-09-02", "2025-09-13", "2025-12-20", "2026-02-17"];
     dates.forEach((dateStr, i) => {
       const countEl = document.querySelector(`#cd${i} span`);
@@ -263,6 +254,68 @@
       updateCountdown();
       setInterval(updateCountdown, 60000);
     });
+
+    function enableTaskAdding(containerId, storageKey) {
+      const container = document.getElementById(containerId);
+
+      function saveTasks() {
+        const tasks = [];
+        container.querySelectorAll(".task-line").forEach(line => {
+          const checkbox = line.querySelector("input[type=checkbox]");
+          const input = line.querySelector(".task-input");
+          tasks.push({ text: input.value, checked: checkbox.checked });
+        });
+        localStorage.setItem(storageKey, JSON.stringify(tasks));
+      }
+
+      function loadTasks() {
+        const saved = localStorage.getItem(storageKey);
+        if (saved) {
+          const tasks = JSON.parse(saved);
+          tasks.forEach(t => {
+            const taskLine = createTaskLine(t.text, t.checked);
+            container.appendChild(taskLine);
+          });
+        } else {
+          container.appendChild(createTaskLine("", false));
+        }
+      }
+
+      function createTaskLine(text, checked) {
+        const taskLine = document.createElement("div");
+        taskLine.className = "task-line";
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.checked = checked;
+        const input = document.createElement("input");
+        input.type = "text";
+        input.className = "task-input";
+        input.placeholder = "Enter a task...";
+        input.value = text;
+        input.addEventListener("input", saveTasks);
+        checkbox.addEventListener("change", saveTasks);
+        taskLine.appendChild(checkbox);
+        taskLine.appendChild(input);
+        return taskLine;
+      }
+
+      container.addEventListener("keydown", function(e) {
+        if (e.key === "Enter") {
+          e.preventDefault();
+          const taskLine = createTaskLine("", false);
+          container.appendChild(taskLine);
+          taskLine.querySelector("input.task-input").focus();
+          saveTasks();
+        }
+      });
+
+      loadTasks();
+    }
+
+    enableTaskAdding("graphicTasks", "graphicTasks");
+    enableTaskAdding("contentTasks", "contentTasks");
+    enableTaskAdding("socialTasks", "socialTasks");
+    enableTaskAdding("photoTasks", "photoTasks");
   </script>
 </body>
 </html>
