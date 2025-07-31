@@ -14,11 +14,13 @@
       padding: 20px;
       transition: background 0.3s, color 0.3s;
     }
+
     body.dark {
       background-color: #111827;
       background-image: none;
       color: white;
     }
+
     .night-toggle {
       position: fixed;
       top: 15px;
@@ -32,16 +34,19 @@
       cursor: pointer;
       font-weight: bold;
     }
+
     header {
       display: flex;
       flex-direction: column;
       align-items: center;
       margin-bottom: 20px;
     }
+
     header img.logo {
       height: 90px;
       transition: filter 0.3s;
     }
+
     .bismillah {
       font-family: 'Cinzel', serif;
       font-size: 28px;
@@ -49,18 +54,22 @@
       text-align: center;
       margin: 15px 0;
     }
+
     body.dark .bismillah {
       color: white;
     }
+
     h1 {
       font-family: 'Cinzel', serif;
       color: #1e3a8a;
       text-align: center;
       margin-bottom: 5px;
     }
+
     body.dark h1 {
       color: white;
     }
+
     .ayah {
       font-style: italic;
       color: #6b7280;
@@ -68,9 +77,11 @@
       text-align: center;
       margin-bottom: 25px;
     }
+
     body.dark .ayah {
       color: #cbd5e1;
     }
+
     .section {
       margin: 30px auto;
       max-width: 950px;
@@ -81,11 +92,13 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.05);
       transition: background 0.3s, color 0.3s;
     }
+
     body.dark .section {
       background: #1f2937;
       border-color: #374151;
       color: white;
     }
+
     .collapsible {
       cursor: pointer;
       padding: 12px 18px;
@@ -99,14 +112,17 @@
       font-size: 16px;
       font-family: 'Montserrat', sans-serif;
     }
+
     body.dark .collapsible {
       background-color: #374151;
       color: white;
     }
+
     .content {
       display: none;
       margin-top: 10px;
     }
+
     .quick-links a {
       display: inline-block;
       margin: 10px 10px 0 0;
@@ -117,37 +133,45 @@
       border-radius: 8px;
       font-weight: 600;
     }
+
     body.dark .quick-links a {
       background-color: #4b5563;
       color: #facc15;
     }
+
     .task-line {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
+      flex-direction: column;
+      align-items: flex-start;
       border-bottom: 1px solid #e5e7eb;
       padding: 8px 0;
     }
+
     body.dark .task-line {
       border-color: #374151;
     }
+
     .task-line input[type=checkbox] {
       margin-right: 12px;
       transform: scale(1.3);
     }
+
     .task-text {
-      flex: 1;
       font-size: 15px;
     }
-    .due-date {
+
+    .due-date, .assigned-to {
       font-size: 13px;
       font-style: italic;
       color: #6b7280;
-      padding-left: 10px;
+      margin-left: 26px;
     }
-    body.dark .due-date {
+
+    body.dark .due-date,
+    body.dark .assigned-to {
       color: #d1d5db;
     }
+
     .team-role {
       margin: 10px 0;
       padding: 10px;
@@ -155,42 +179,57 @@
       border-left: 4px solid #1d4ed8;
       border-radius: 8px;
     }
+
     body.dark .team-role {
       background: #374151;
       border-left-color: #60a5fa;
     }
+
     .countdown {
       font-size: 18px;
       margin-bottom: 8px;
     }
 
-    /* Greeting bubble */
-    .greeting {
+    /* Speech bubble greeting */
+    .greeting-bubble {
       position: fixed;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: #1e3a8a;
+      bottom: 30px;
+      right: 30px;
+      background: #1e3a8a;
       color: white;
-      padding: 12px 20px;
-      border-radius: 999px;
+      padding: 15px 18px;
+      border-radius: 20px;
       font-weight: bold;
-      font-size: 16px;
-      z-index: 1000;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-      animation: fadeOut 10s forwards;
+      font-size: 14px;
+      box-shadow: 0 0 15px rgba(30,58,138,0.5);
+      animation: fadeIn 1s ease-in;
+      transition: transform 0.3s ease;
+      z-index: 999;
     }
-    @keyframes fadeOut {
-      0% { opacity: 1; }
-      80% { opacity: 1; }
-      100% { opacity: 0; display: none; }
+
+    .greeting-bubble:hover {
+      animation: glow 1s infinite alternate;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes glow {
+      from {
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+      }
+      to {
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.9);
+      }
     }
   </style>
 </head>
 <body>
-  <div class="greeting">Assalamu Alaikum! ✨</div>
-
   <button class="night-toggle" onclick="toggleNightMode()">🌙 Toggle Night Mode</button>
+  <div class="greeting-bubble">Welcome to the Command Center!</div>
+
   <header>
     <img class="logo" id="msaLogo" src="msa_logo.png" alt="UTMMSA Logo">
     <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَـنِ الرَّحِيمِ</div>
@@ -198,8 +237,13 @@
     <div class="ayah">“وَقُلِ اعْمَلُوا فَسَيَرَى اللَّهُ عَمَلَكُمْ” – [At-Tawbah 9:105]</div>
   </header>
 
-  <!-- (Your remaining sections: Countdowns, Quick Links, Tasks, Team Roles...) -->
-  
+  <!-- COUNTDOWNS + TASKS + TEAM SECTIONS STAY THE SAME -->
+
+  <!-- Your existing <div class="section"> content remains unchanged -->
+  <!-- Make sure each task block includes a line like:
+       <div class="assigned-to">Assigned to: NAME</div>
+  -->
+
   <script>
     function toggleNightMode() {
       const body = document.body;
