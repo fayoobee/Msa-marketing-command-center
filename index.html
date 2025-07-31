@@ -110,7 +110,6 @@
       border: none;
       text-align: left;
       font-size: 16px;
-      font-family: 'Montserrat', sans-serif;
     }
 
     body.dark .collapsible {
@@ -141,10 +140,17 @@
 
     .task-line {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 10px;
+      margin-bottom: 10px;
       border-bottom: 1px solid #e5e7eb;
-      padding: 8px 0;
+      transition: box-shadow 0.3s;
+    }
+
+    .task-line:hover {
+      box-shadow: 0 0 12px rgba(30, 58, 138, 0.6);
+      border-radius: 6px;
     }
 
     body.dark .task-line {
@@ -152,23 +158,24 @@
     }
 
     .task-line input[type=checkbox] {
-      margin-right: 12px;
       transform: scale(1.3);
+      margin-right: 10px;
     }
 
     .task-text {
-      flex: 1;
       font-size: 15px;
+      font-weight: 600;
     }
 
-    .due-date {
+    .due-date, .assigned {
       font-size: 13px;
       font-style: italic;
       color: #6b7280;
-      padding-left: 10px;
+      margin-top: 2px;
     }
 
-    body.dark .due-date {
+    body.dark .due-date,
+    body.dark .assigned {
       color: #d1d5db;
     }
 
@@ -189,9 +196,36 @@
       font-size: 18px;
       margin-bottom: 8px;
     }
+
+    /* Greeting Bubble */
+    #greeting-bubble {
+      position: fixed;
+      top: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #1e3a8a;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 30px;
+      font-weight: bold;
+      font-size: 16px;
+      z-index: 2000;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      opacity: 0;
+      animation: fadeInOut 10s forwards;
+    }
+
+    @keyframes fadeInOut {
+      0% { opacity: 0; transform: translate(-50%, -20px); }
+      10% { opacity: 1; transform: translate(-50%, 0); }
+      90% { opacity: 1; }
+      100% { opacity: 0; transform: translate(-50%, -20px); }
+    }
   </style>
 </head>
 <body>
+  <div id="greeting-bubble">Assalamu Alaikum 👋</div>
+
   <button class="night-toggle" onclick="toggleNightMode()">🌙 Toggle Night Mode</button>
   <header>
     <img class="logo" id="msaLogo" src="msa_logo.png" alt="UTMMSA Logo">
@@ -200,72 +234,30 @@
     <div class="ayah">“وَقُلِ اعْمَلُوا فَسَيَرَى اللَّهُ عَمَلَكُمْ” – [At-Tawbah 9:105]</div>
   </header>
 
-  <div class="section">
-    <button class="collapsible">⏳ Countdowns</button>
-    <div class="content">
-      <div class="countdown" id="cd0"><strong>First Day of Class:</strong> <span></span></div>
-      <div class="countdown" id="cd1"><strong>Frosh Field Day:</strong> <span></span></div>
-      <div class="countdown" id="cd2"><strong>End of Semester:</strong> <span></span></div>
-      <div class="countdown" id="cd3"><strong>Ramadan Begins (est.):</strong> <span></span></div>
-    </div>
-  </div>
+  <!-- You can now insert your collapsible sections here with tasks -->
 
-  <div class="section">
-    <button class="collapsible">🔗 Quick Links</button>
-    <div class="content quick-links">
-      <a href="https://www.lensbridge.tech/" target="_blank">LensBridge</a>
-      <a href="https://www.notion.so/utmmsa2023-24/Marketing-20793a1f50b38177a868e8bf46ba31ad" target="_blank">Marketing Notion</a>
-      <a href="https://www.notion.so/utmmsa2023-24/25-26-20793a1f50b3802fa699ea4681c955b5" target="_blank">General MSA Notion</a>
-      <a href="https://www.utm.utoronto.ca/registrar/dates" target="_blank">UTM Important Dates</a>
-      <a href="https://calendar.google.com/calendar/u/0?cid=MW..." target="_blank">📅 Shared MSA Calendar</a>
-    </div>
-  </div>
-
-  <!-- Task Sections -->
+  <!-- Example Task Block -->
   <div class="section">
     <button class="collapsible">🎨 Tasks - Graphic Design</button>
     <div class="content task-list">
-      <div class="task-line"><input type="checkbox"><span class="task-text">SAMPLE TASK 1</span><div class="due-date">Due: Aug 12, 2025</div></div>
-      <div class="task-line"><input type="checkbox"><span class="task-text">SAMPLE TASK 2</span><div class="due-date">Due: Aug 22, 2025</div></div>
-      <div class="task-line"><input type="checkbox"><span class="task-text">SAMPLE TASK 3</span><div class="due-date">Due: Sept 2, 2025</div></div>
-    </div>
-  </div>
-
-  <div class="section">
-    <button class="collapsible">✍️ Tasks - Content Creation</button>
-    <div class="content task-list">
-      <div class="task-line"><input type="checkbox"><span class="task-text">SAMPLE TASK 1</span><div class="due-date">Due: Aug 15, 2025</div></div>
-      <div class="task-line"><input type="checkbox"><span class="task-text">SAMPLE TASK 2</span><div class="due-date">Due: Aug 25, 2025</div></div>
-      <div class="task-line"><input type="checkbox"><span class="task-text">SAMPLE TASK 3</span><div class="due-date">Due: Sept 1, 2025</div></div>
-    </div>
-  </div>
-
-  <div class="section">
-    <button class="collapsible">📱 Tasks - Social Media Management</button>
-    <div class="content task-list">
-      <div class="task-line"><input type="checkbox"><span class="task-text">SAMPLE TASK 1</span><div class="due-date">Due: Aug 20, 2025</div></div>
-      <div class="task-line"><input type="checkbox"><span class="task-text">SAMPLE TASK 2</span><div class="due-date">Due: Aug 28, 2025</div></div>
-      <div class="task-line"><input type="checkbox"><span class="task-text">SAMPLE TASK 3</span><div class="due-date">Due: Sept 4, 2025</div></div>
-    </div>
-  </div>
-
-  <div class="section">
-    <button class="collapsible">📸 Tasks - Photography</button>
-    <div class="content task-list">
-      <div class="task-line"><input type="checkbox"><span class="task-text">SAMPLE TASK 1</span><div class="due-date">Due: Aug 18, 2025</div></div>
-      <div class="task-line"><input type="checkbox"><span class="task-text">SAMPLE TASK 2</span><div class="due-date">Due: Aug 26, 2025</div></div>
-      <div class="task-line"><input type="checkbox"><span class="task-text">SAMPLE TASK 3</span><div class="due-date">Due: Sept 5, 2025</div></div>
-    </div>
-  </div>
-
-  <div class="section">
-    <button class="collapsible">🧠 Team Roles</button>
-    <div class="content">
-      <div class="team-role"><strong>Directors:</strong> Ibrahim Chehab, Farah Ismail</div>
-      <div class="team-role"><strong>Social Media Managers:</strong> Nadia, Wafa, Rose</div>
-      <div class="team-role"><strong>Graphic Designers:</strong> Jasra, Taimaa, Haleema, Wakeel, Fahmi, Zoha</div>
-      <div class="team-role"><strong>Content Creators:</strong> Mustafa, Faris, Zunairah, Ayesha</div>
-      <div class="team-role"><strong>Photographer:</strong> Fathima</div>
+      <div class="task-line">
+        <input type="checkbox">
+        <span class="task-text">SAMPLE TASK 1</span>
+        <div class="due-date">Due: Aug 01, 2025</div>
+        <div class="assigned">Assigned to: Jasra</div>
+      </div>
+      <div class="task-line">
+        <input type="checkbox">
+        <span class="task-text">SAMPLE TASK 2</span>
+        <div class="due-date">Due: Aug 31, 2025</div>
+        <div class="assigned">Assigned to: Haleema</div>
+      </div>
+      <div class="task-line">
+        <input type="checkbox">
+        <span class="task-text">SAMPLE TASK 3</span>
+        <div class="due-date">Due: Sep 30, 2025</div>
+        <div class="assigned">Assigned to: Wakeel</div>
+      </div>
     </div>
   </div>
 
@@ -274,11 +266,7 @@
       const body = document.body;
       const logo = document.getElementById("msaLogo");
       body.classList.toggle('dark');
-      if (body.classList.contains('dark')) {
-        logo.src = "msa_logo_white.png";
-      } else {
-        logo.src = "msa_logo.png";
-      }
+      logo.src = body.classList.contains('dark') ? "msa_logo_white.png" : "msa_logo.png";
     }
 
     document.querySelectorAll(".collapsible").forEach(btn => {
