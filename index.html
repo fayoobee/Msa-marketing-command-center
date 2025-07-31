@@ -1,3 +1,4 @@
+<!-- Start of full code (cut to fit) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,19 +15,11 @@
       padding: 20px;
       transition: background 0.3s, color 0.3s;
     }
+
     body.dark {
       background-color: #111827;
       background-image: none;
       color: white;
-    }
-
-    /* Glow hover effect */
-    .collapsible:hover,
-    .night-toggle:hover,
-    .quick-links a:hover,
-    .speech-bubble:hover {
-      box-shadow: 0 0 12px 3px #60a5fa;
-      transform: scale(1.03);
     }
 
     .night-toggle {
@@ -41,18 +34,20 @@
       border-radius: 6px;
       cursor: pointer;
       font-weight: bold;
-      transition: transform 0.3s, box-shadow 0.3s;
     }
+
     header {
       display: flex;
       flex-direction: column;
       align-items: center;
       margin-bottom: 20px;
     }
+
     header img.logo {
       height: 90px;
       transition: filter 0.3s;
     }
+
     .bismillah {
       font-family: 'Cinzel', serif;
       font-size: 28px;
@@ -60,18 +55,22 @@
       text-align: center;
       margin: 15px 0;
     }
+
     body.dark .bismillah {
       color: white;
     }
+
     h1 {
       font-family: 'Cinzel', serif;
       color: #1e3a8a;
       text-align: center;
       margin-bottom: 5px;
     }
+
     body.dark h1 {
       color: white;
     }
+
     .ayah {
       font-style: italic;
       color: #6b7280;
@@ -79,9 +78,11 @@
       text-align: center;
       margin-bottom: 25px;
     }
+
     body.dark .ayah {
       color: #cbd5e1;
     }
+
     .section {
       margin: 30px auto;
       max-width: 950px;
@@ -92,11 +93,13 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.05);
       transition: background 0.3s, color 0.3s;
     }
+
     body.dark .section {
       background: #1f2937;
       border-color: #374151;
       color: white;
     }
+
     .collapsible {
       cursor: pointer;
       padding: 12px 18px;
@@ -109,16 +112,26 @@
       text-align: left;
       font-size: 16px;
       font-family: 'Montserrat', sans-serif;
-      transition: transform 0.3s, box-shadow 0.3s;
+      transition: box-shadow 0.3s;
     }
+
+    .collapsible:hover,
+    .night-toggle:hover,
+    .quick-links a:hover,
+    .task-line:hover {
+      box-shadow: 0 0 10px 2px rgba(59, 130, 246, 0.7);
+    }
+
     body.dark .collapsible {
       background-color: #374151;
       color: white;
     }
+
     .content {
       display: none;
       margin-top: 10px;
     }
+
     .quick-links a {
       display: inline-block;
       margin: 10px 10px 0 0;
@@ -128,47 +141,47 @@
       text-decoration: none;
       border-radius: 8px;
       font-weight: 600;
-      transition: transform 0.3s, box-shadow 0.3s;
+      transition: box-shadow 0.3s;
     }
+
     body.dark .quick-links a {
       background-color: #4b5563;
       color: #facc15;
     }
+
     .task-line {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
+      flex-direction: column;
       border-bottom: 1px solid #e5e7eb;
       padding: 8px 0;
-      flex-wrap: wrap;
+      transition: box-shadow 0.3s;
     }
+
     body.dark .task-line {
       border-color: #374151;
     }
+
     .task-line input[type=checkbox] {
       margin-right: 12px;
       transform: scale(1.3);
     }
+
     .task-text {
-      flex: 1;
       font-size: 15px;
     }
-    .due-date {
+
+    .due-date, .assigned-to {
       font-size: 13px;
       font-style: italic;
       color: #6b7280;
-      padding-left: 10px;
+      padding-left: 24px;
     }
-    .assigned-to {
-      font-size: 13px;
-      font-style: italic;
-      color: #9ca3af;
-      margin-left: 36px;
-    }
+
     body.dark .due-date,
     body.dark .assigned-to {
       color: #d1d5db;
     }
+
     .team-role {
       margin: 10px 0;
       padding: 10px;
@@ -176,49 +189,30 @@
       border-left: 4px solid #1d4ed8;
       border-radius: 8px;
     }
+
     body.dark .team-role {
       background: #374151;
       border-left-color: #60a5fa;
     }
+
     .countdown {
       font-size: 18px;
       margin-bottom: 8px;
-    }
-
-    .speech-bubble {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #1e3a8a;
-      color: white;
-      padding: 14px 20px;
-      border-radius: 20px;
-      font-weight: bold;
-      font-size: 14px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      animation: fadeOut 0s ease-in-out 10s forwards;
-      z-index: 1000;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    @keyframes fadeOut {
-      to {
-        opacity: 0;
-        visibility: hidden;
-      }
     }
   </style>
 </head>
 <body>
   <button class="night-toggle" onclick="toggleNightMode()">🌙 Toggle Night Mode</button>
-  <div class="speech-bubble" id="greetingBubble">Assalamu alaikum!</div>
 
-  <!-- 🕌 Header + logo, bismillah, ayah -->
   <header>
     <img class="logo" id="msaLogo" src="msa_logo.png" alt="UTMMSA Logo">
     <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَـنِ الرَّحِيمِ</div>
     <h1>Marketing Command Center</h1>
     <div class="ayah">“وَقُلِ اعْمَلُوا فَسَيَرَى اللَّهُ عَمَلَكُمْ” – [At-Tawbah 9:105]</div>
   </header>
+
+  <!-- Countdown Section -->
+  <div class="section">
     <button class="collapsible">⏳ Countdowns</button>
     <div class="content">
       <div class="countdown" id="cd0"><strong>First Day of Class:</strong> <span></span></div>
@@ -228,6 +222,7 @@
     </div>
   </div>
 
+  <!-- Quick Links -->
   <div class="section">
     <button class="collapsible">🔗 Quick Links</button>
     <div class="content quick-links">
@@ -239,42 +234,24 @@
     </div>
   </div>
 
+  <!-- Task Example -->
   <div class="section">
     <button class="collapsible">🎨 Tasks - Graphic Design</button>
     <div class="content task-list">
-      <div class="task-line"><input type="checkbox"><span class="task-text">SAMPLE TASK 1</span><div class="due-date">Due: Aug 12, 2025</div></div>
-      <div class="task-line"><input type="checkbox"><span class="task-text">SAMPLE TASK 2</span><div class="due-date">Due: Aug 22, 2025</div></div>
-      <div class="task-line"><input type="checkbox"><span class="task-text">SAMPLE TASK 3</span><div class="due-date">Due: Sept 2, 2025</div></div>
+      <div class="task-line">
+        <label><input type="checkbox"> <span class="task-text">SAMPLE TASK 1</span></label>
+        <div class="due-date">Due: Aug 12, 2025</div>
+        <div class="assigned-to">Assigned to: Jasra</div>
+      </div>
+      <div class="task-line">
+        <label><input type="checkbox"> <span class="task-text">SAMPLE TASK 2</span></label>
+        <div class="due-date">Due: Aug 22, 2025</div>
+        <div class="assigned-to">Assigned to: Taimaa</div>
+      </div>
     </div>
   </div>
 
-  <div class="section">
-    <button class="collapsible">✍️ Tasks - Content Creation</button>
-    <div class="content task-list">
-      <div class="task-line"><input type="checkbox"><span class="task-text">SAMPLE TASK 1</span><div class="due-date">Due: Aug 15, 2025</div></div>
-      <div class="task-line"><input type="checkbox"><span class="task-text">SAMPLE TASK 2</span><div class="due-date">Due: Aug 25, 2025</div></div>
-      <div class="task-line"><input type="checkbox"><span class="task-text">SAMPLE TASK 3</span><div class="due-date">Due: Sept 1, 2025</div></div>
-    </div>
-  </div>
-
-  <div class="section">
-    <button class="collapsible">📱 Tasks - Social Media Management</button>
-    <div class="content task-list">
-      <div class="task-line"><input type="checkbox"><span class="task-text">SAMPLE TASK 1</span><div class="due-date">Due: Aug 20, 2025</div></div>
-      <div class="task-line"><input type="checkbox"><span class="task-text">SAMPLE TASK 2</span><div class="due-date">Due: Aug 28, 2025</div></div>
-      <div class="task-line"><input type="checkbox"><span class="task-text">SAMPLE TASK 3</span><div class="due-date">Due: Sept 4, 2025</div></div>
-    </div>
-  </div>
-
-  <div class="section">
-    <button class="collapsible">📸 Tasks - Photography</button>
-    <div class="content task-list">
-      <div class="task-line"><input type="checkbox"><span class="task-text">SAMPLE TASK 1</span><div class="due-date">Due: Aug 18, 2025</div></div>
-      <div class="task-line"><input type="checkbox"><span class="task-text">SAMPLE TASK 2</span><div class="due-date">Due: Aug 26, 2025</div></div>
-      <div class="task-line"><input type="checkbox"><span class="task-text">SAMPLE TASK 3</span><div class="due-date">Due: Sept 5, 2025</div></div>
-    </div>
-  </div>
-
+  <!-- Team Roles -->
   <div class="section">
     <button class="collapsible">🧠 Team Roles</button>
     <div class="content">
@@ -286,16 +263,13 @@
     </div>
   </div>
 
+  <!-- Scripts -->
   <script>
     function toggleNightMode() {
       const body = document.body;
       const logo = document.getElementById("msaLogo");
       body.classList.toggle('dark');
-      if (body.classList.contains('dark')) {
-        logo.src = "msa_logo_white.png";
-      } else {
-        logo.src = "msa_logo.png";
-      }
+      logo.src = body.classList.contains('dark') ? "msa_logo_white.png" : "msa_logo.png";
     }
 
     document.querySelectorAll(".collapsible").forEach(btn => {
@@ -307,7 +281,7 @@
 
     const dates = ["2025-09-02", "2025-09-13", "2025-12-20", "2026-02-17"];
     dates.forEach((dateStr, i) => {
-      const countEl = document.querySelector(#cd${i} span);
+      const countEl = document.querySelector(`#cd${i} span`);
       const target = new Date(dateStr + 'T00:00:00');
       function updateCountdown() {
         const now = new Date();
@@ -315,7 +289,7 @@
         const days = Math.floor(diff / (1000 * 60 * 60 * 24));
         const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
         const minutes = Math.floor((diff / (1000 * 60)) % 60);
-        countEl.textContent = ${days}d ${hours}h ${minutes}m;
+        countEl.textContent = `${days}d ${hours}h ${minutes}m`;
       }
       updateCountdown();
       setInterval(updateCountdown, 60000);
@@ -323,4 +297,3 @@
   </script>
 </body>
 </html>
-
