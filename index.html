@@ -9,6 +9,7 @@
     :root {
       --background: #fdfdfd;
       --text: #1f2937;
+      --heading: #1e3a8a;
       --section: #ffffff;
       --task-border: #d1d5db;
       --link-bg: #fff9e6;
@@ -16,10 +17,11 @@
     }
 
     body.dark {
-      --background: #111827;
+      --background: #0f172a;
       --text: #ffffff;
-      --section: #1f2937;
-      --task-border: #374151;
+      --heading: #ffffff;
+      --section: #1e293b;
+      --task-border: #334155;
       --link-bg: #1e293b;
       --link-text: #facc15;
     }
@@ -33,6 +35,7 @@
       background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Islamic_Geometric_Pattern_04.svg/2560px-Islamic_Geometric_Pattern_04.svg.png");
       background-size: cover;
       background-attachment: fixed;
+      transition: background 0.3s ease, color 0.3s ease;
     }
 
     header {
@@ -54,24 +57,27 @@
 
     .bismillah {
       font-family: 'Cinzel', serif;
-      font-size: 28px;
-      color: #1e3a8a;
+      font-size: 26px;
       text-align: center;
-      margin: 15px 0;
+      color: var(--heading);
+      margin: 10px 0;
+    }
+
+    h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 28px;
+      color: var(--heading);
+      margin: 10px 0;
     }
 
     .ayah {
       font-style: italic;
+      font-family: 'Cinzel', serif;
       font-size: 14px;
       text-align: center;
-      margin-bottom: 25px;
       color: var(--text);
-      opacity: 0.8;
-    }
-
-    h1 {
-      color: #1e3a8a;
-      margin: 10px 0;
+      opacity: 0.9;
+      margin-bottom: 20px;
     }
 
     .toggle-btn {
@@ -82,8 +88,12 @@
       border-radius: 12px;
       cursor: pointer;
       font-weight: bold;
-      margin-top: 10px;
       transition: 0.3s;
+    }
+
+    .toggle-btn:hover {
+      background: var(--text);
+      color: var(--background);
     }
 
     .section {
