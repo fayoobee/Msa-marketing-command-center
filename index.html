@@ -47,10 +47,6 @@
       transition: filter 0.3s;
     }
 
-    body.dark img.logo {
-      filter: brightness(0) invert(1);
-    }
-
     .bismillah {
       font-family: 'Cinzel', serif;
       font-size: 28px;
@@ -143,15 +139,15 @@
       color: #facc15;
     }
 
-    .task-list .task-line {
+    .task-line {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 8px 0;
       border-bottom: 1px solid #e5e7eb;
+      padding: 8px 0;
     }
 
-    body.dark .task-list .task-line {
+    body.dark .task-line {
       border-color: #374151;
     }
 
@@ -196,9 +192,9 @@
   </style>
 </head>
 <body>
-  <button class="night-toggle" onclick="document.body.classList.toggle('dark')">🌙 Toggle Night Mode</button>
+  <button class="night-toggle" onclick="toggleNightMode()">🌙 Toggle Night Mode</button>
   <header>
-    <img class="logo" src="msa_logo_white.PNG" alt="msa_logo.png">
+    <img class="logo" id="msaLogo" src="msa_logo.png" alt="UTMMSA Logo">
     <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَـنِ الرَّحِيمِ</div>
     <h1>Marketing Command Center</h1>
     <div class="ayah">“وَقُلِ اعْمَلُوا فَسَيَرَى اللَّهُ عَمَلَكُمْ” – [At-Tawbah 9:105]</div>
@@ -225,6 +221,7 @@
     </div>
   </div>
 
+  <!-- Task Sections -->
   <div class="section">
     <button class="collapsible">🎨 Tasks - Graphic Design</button>
     <div class="content task-list">
@@ -264,6 +261,7 @@
   <div class="section">
     <button class="collapsible">🧠 Team Roles</button>
     <div class="content">
+      <div class="team-role"><strong>Directors:</strong> Ibrahim Chehab, Farah Ismail</div>
       <div class="team-role"><strong>Social Media Managers:</strong> Nadia, Wafa, Rose</div>
       <div class="team-role"><strong>Graphic Designers:</strong> Jasra, Taimaa, Haleema, Wakeel, Fahmi, Zoha</div>
       <div class="team-role"><strong>Content Creators:</strong> Mustafa, Faris, Zunairah, Ayesha</div>
@@ -272,6 +270,17 @@
   </div>
 
   <script>
+    function toggleNightMode() {
+      const body = document.body;
+      const logo = document.getElementById("msaLogo");
+      body.classList.toggle('dark');
+      if (body.classList.contains('dark')) {
+        logo.src = "msa_logo_white.png";
+      } else {
+        logo.src = "msa_logo.png";
+      }
+    }
+
     document.querySelectorAll(".collapsible").forEach(btn => {
       btn.addEventListener("click", () => {
         const content = btn.nextElementSibling;
